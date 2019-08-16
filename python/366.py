@@ -47,5 +47,4 @@ class Solution2:
     def findLeaves(self, root: TreeNode) -> List[List[int]]:
         heights = defaultdict(list)
         self.dfs(root, heights)
-        print(heights)
         return heights.values()
