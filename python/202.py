@@ -1,19 +1,17 @@
 class Solution:
-
-    def getDigitSquareSum(self, num):
-        total = 0
-        while num != 0:
-            digit = num % 10
-            num = num//10
-            total += digit**2
-        return total
-
     def isHappy(self, n: int) -> bool:
         seen = set()
+        seen.add(n)
         num = n
-        while num not in seen:
-            seen.add(num)
-            num = self.getDigitSquareSum(num)
-            if num == 1:
-                return True
-        return False
+        while num != 1:
+            temp = 0
+            while num:
+                digit = num%10
+                temp += digit**2
+                num //= 10
+            if temp in seen:
+                return False
+            seen.add(temp)
+            num = temp
+        return True
+        
